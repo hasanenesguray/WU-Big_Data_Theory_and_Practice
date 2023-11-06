@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<library_system>
+  <books>
+    <book id="1">
+      <title>The Ocean's Mystery</title>
+      <author>A.J. Green</author>
+      <genre>Fiction</genre>
+      <publish_year>2015</publish_year>
+    </book>
+    <book id="2">
+      <title>History of Earth</title>
+      <author>B.K. White</author>
+      <genre>Non-Fiction</genre>
+      <publish_year>2019</publish_year>
+    </book>
+    <book id="3">
+      <title>Stars Above</title>
+      <author>L.M. Blue</author>
+      <genre>Fiction</genre>
+      <publish_year>2018</publish_year>
+    </book>
+    <book id="4">
+      <title>Programming for Beginners</title>
+      <author>Z.A. Azure</author>
+      <genre>Tech</genre>
+      <publish_year>2022</publish_year>
+    </book>
+    <book id="5">
+      <title>The Mayor's Life</title>
+      <author>A.J. Green</author>
+      <genre>Biography</genre>
+      <publish_year>2016</publish_year>
+    </book>
+    <book id="6">
+      <title>Deep Dive into Python</title>
+      <author>Z.A. Azure</author>
+      <genre>Tech</genre>
+      <publish_year>2021</publish_year>
+    </book>
+    <book id="7">
+      <title>Desert Tales</title>
+      <author>L.M. Blue</author>
+      <genre>Fiction</genre>
+      <publish_year>2020</publish_year>
+    </book>
+    <book id="8">
+      <title>Nature's Wonders</title>
+      <author>P.R. Red</author>
+      <genre>Non-Fiction</genre>
+      <publish_year>2019</publish_year>
+    </book>
+    <book id="9">
+      <title>Secrets of the Universe</title>
+      <author>T.U. Teal</author>
+      <genre>Science</genre>
+      <publish_year>2017</publish_year>
+    </book>
+    <book id="10">
+      <title>Mathematical Puzzles</title>
+      <author>T.U. Teal</author>
+      <genre>Science</genre>
+      <publish_year>2022</publish_year>
+    </book>
+  </books>
+  <borrowers>
+    <borrower id="501">
+      <book_id>1</book_id>
+      <borrow_date>2023-07-11</borrow_date>
+    </borrower>
+    <borrower id="502">
+      <book_id>2</book_id>
+      <borrow_date>2023-07-25</borrow_date>
+    </borrower>
+    <borrower id="503">
+      <book_id>8</book_id>
+      <borrow_date>2023-08-02</borrow_date>
+    </borrower>
+    <borrower id="504">
+      <book_id>4</book_id>
+      <borrow_date>2023-09-25</borrow_date>
+    </borrower>
+    <borrower id="505">
+      <book_id>5</book_id>
+      <borrow_date></borrow_date> <!-- Assuming "-" means no date -->
+    </borrower>
+    <borrower id="506">
+      <book_id>1</book_id>
+      <borrow_date>2023-08-15</borrow_date>
+    </borrower>
+    <borrower id="506" sequence="2"> <!-- Added sequence to distinguish multiple borrows by the same ID -->
+      <book_id>6</book_id>
+      <borrow_date>2023-08-20</borrow_date>
+    </borrower>
+    <borrower id="507">
+      <book_id>7</book_id>
+      <borrow_date>2023-08-25</borrow_date>
+    </borrower>
+    <borrower id="508">
+      <book_id>8</book_id>
+      <borrow_date>2023-09-01</borrow_date>
+    </borrower>
+    <borrower id="509">
+      <book_id>9</book_id>
+      <borrow_date>2023-09-10</borrow_date>
+    </borrower>
+  </borrowers>
+  <authors>
+    <author id="101">
+      <name>A.J. Green</name>
+      <birth_year>1980</birth_year>
+      <nationality>UK</nationality>
+    </author>
+    <author id="102">
+     <name>B.K. White</name>
+      <birth_year>1975</birth_year>
+      <nationality>USA</nationality>
+    </author>
+    <author id="103">
+      <name>L.M. Blue</name>
+      <birth_year>1990</birth_year>
+      <nationality>Canada</nationality>
+    </author>
+    <author id="104">
+      <name>Z.A. Azure</name>
+      <birth_year>1985</birth_year>
+      <nationality>Australia</nationality>
+    </author>
+    <author id="105">
+      <name>P.R. Red</name>
+      <birth_year>1982</birth_year>
+      <nationality>UK</nationality>
+    </author>
+    <author id="106">
+      <name>T.U. Teal</name>
+      <birth_year>1978</birth_year>
+      <nationality>USA</nationality>
+    </author>
+  </authors>
+</library_system>
