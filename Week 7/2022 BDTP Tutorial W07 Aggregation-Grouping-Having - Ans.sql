@@ -110,12 +110,12 @@ WHERE party = 'lab'
 /*
 d.	Display the constituency name and the total votes cast of constituencies where no more than three parties had candidates.
 */
-SELECT uknum, ukarea,
-         COUNT(*) AS "No of parties",
-           SUM(ukvotes) AS "total votes cast"
-FROM ukresults NATURAL JOIN ukconsts
-GROUP BY uknum, ukarea
-HAVING COUNT(*)<4;
+  SELECT uknum, ukarea,
+          COUNT(*) AS "No of parties",
+            SUM(ukvotes) AS "total votes cast"
+  FROM ukresults NATURAL JOIN ukconsts
+  GROUP BY uknum, ukarea
+  HAVING COUNT(*)<4;
 
 -- An equivalent expression can be the following
 
