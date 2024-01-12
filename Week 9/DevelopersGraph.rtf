@@ -1,0 +1,75 @@
+// Create ProgrammingLanguage nodes
+CREATE (java:ProgrammingLanguage {name: "Java", yearCreated: 1995, paradigm: "Object-Oriented"})
+CREATE (python:ProgrammingLanguage {name: "Python", yearCreated: 1991, paradigm: "Multi-Paradigm"})
+CREATE (js:ProgrammingLanguage {name: "JavaScript", yearCreated: 1995, paradigm: "Multi-Paradigm"})
+
+// Create Technology nodes including Hadoop
+CREATE (hadoop:Technology {name: "Hadoop", type: "Big Data Framework"})
+CREATE (tensorflow:Technology {name: "TensorFlow", type: "ML Library"})
+CREATE (spark:Technology {name: "Spark", type: "Big Data Framework"})
+
+// Create Developer nodes
+CREATE (alice:Developer {name: "Alice", yearsOfExperience: 5, favoriteLanguage: "Python"})
+CREATE (bob:Developer {name: "Bob", yearsOfExperience: 3, favoriteLanguage: "Java"})
+CREATE (carol:Developer {name: "Carol", yearsOfExperience: 8, favoriteLanguage: "JavaScript"})
+
+// Create Project nodes
+CREATE (projA:Project {name: "Project A", description: "Web Application", startDate: "2022-01-01"})
+CREATE (projB:Project {name: "Project B", description: "Data Analysis", startDate: "2022-03-15"})
+
+// Create relationships between Developers
+CREATE (alice)-[:KNOWS]->(bob)
+CREATE (bob)-[:KNOWS]->(alice)
+CREATE (alice)-[:WORKS_ON]->(projA)
+CREATE (bob)-[:WORKS_ON]->(projB)
+CREATE (carol)-[:WORKS_ON]->(projA)
+
+// Create relationships between Projects and Technologies
+CREATE (projA)-[:USES_TECH]->(js)
+CREATE (projB)-[:USES_TECH]->(python)
+CREATE (projA)-[:USES_TECH]->(spark) // Example relationship
+CREATE (projB)-[:USES_TECH]->(hadoop) // Adding Hadoop
+
+// Create relationships indicating interest
+CREATE (alice)-[:INTERESTED_IN]->(tensorflow)
+CREATE (bob)-[:INTERESTED_IN]->(python)
+CREATE (carol)-[:INTERESTED_IN]->(java)
+
+//Return the whole graph
+MATCH (n) RETURN n;
+MATCH (n) DETACH DELETE n
+
+//List all Developers and their favourite language.
+MATCH (n:DataScientist)
+RETURN n.name, n.specialization
+
+//Find all Big Data Engineers who work on a project that uses the 'Hadoop' technology.
+MATCH (e:Developer)-[:WORKS_ON]->(p:Project)-[:USES_TECH]->(t:Technology {name: "Hadoop"})
+RETURN e.name
+
+//List Technologies in the 'Big Data Framework' category
+MATCH (t:Technology {type: "Big Data Framework"})
+RETURN t
+
+//Average years of experience of developers
+MATCH (d:Developer)
+RETURN AVG(d.yearsOfExperience) as AvgExperience
+
+//Find the path between two Developers - Alice and Carol
+MATCH path=shortestPath((d1:Developer {name: "Alice"})-[*]-(d2:Developer {name: "Carol"}))
+RETURN path
+
+//Developers interested in technologies they do not work with
+MATCH (d:Developer)-[:INTERESTED_IN]->(t:Technology)
+WHERE NOT (d)-[:WORKS_ON]->(:Project)-[:USES_TECH]->(t)
+RETURN d.name, t.name
+
+//List all Projects started after 2022
+MATCH (p:Project)
+WHERE p.startDate > "2022-01-01"
+RETURN p.name, p.startDate
+
+//Developers with more than 7 years of experience interested in 'Java'
+MATCH (d:Developer)-[:INTERESTED_IN]->(:ProgrammingLanguage {name: "Java"})
+WHERE d.yearsOfExperience > 7
+RETURN d.name, d.yearsOfExperience
